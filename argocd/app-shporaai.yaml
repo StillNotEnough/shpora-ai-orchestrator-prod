@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: <URL_твоего_orchestrator_repo>
+    repoURL: https://github.com/StillNotEnough/shpora-ai-orchestrator-prod.git
     targetRevision: main
     path: k8s/base
   destination:
