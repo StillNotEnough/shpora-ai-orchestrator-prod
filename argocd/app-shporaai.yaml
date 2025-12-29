@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shporaai-base
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: <URL_твоего_orchestrator_repo>
+    targetRevision: main
+    path: k8s/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shporaai
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
