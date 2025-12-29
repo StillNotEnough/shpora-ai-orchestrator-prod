@@ -50,9 +50,17 @@ jobs:
           echo "Rendered manifest size:"
           wc -l /tmp/rendered.yaml
 
+      - name: Install kubeconform
+        run: |
+          set -euo pipefail
+          VERSION="0.6.7"
+          curl -sSL -o /tmp/kubeconform.tar.gz \
+            "https://github.com/yannh/kubeconform/releases/download/v${VERSION}/kubeconform-linux-amd64.tar.gz"
+          tar -xzf /tmp/kubeconform.tar.gz -C /tmp
+          sudo mv /tmp/kubeconform /usr/local/bin/kubeconform
+          sudo chmod +x /usr/local/bin/kubeconform
+          kubeconform -v
+
       - name: kubeconform (schema validation)
         run: |
-          curl -sSL -o /usr/local/bin/kubeconform \
-            https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64
-          chmod +x /usr/local/bin/kubeconform
           kubeconform -strict -ignore-missing-schemas -summary /tmp/rendered.yaml
