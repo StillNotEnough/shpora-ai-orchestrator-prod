@@ -10,6 +10,8 @@ spec:
       app: ai-service
   template:
     metadata:
+      annotations:
+        gitops-test: "1"
       labels:
         app: ai-service
     spec:
