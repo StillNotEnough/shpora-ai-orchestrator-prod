@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ai-service
-          image: ghcr.io/stillnotenough/ai-service:sha-ac8a020
+          image: ghcr.io/stillnotenough/ai-service:sha-fe95420
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
@@ -25,14 +25,12 @@ spec:
                 secretKeyRef:
                   name: ai-service-secrets
                   key: OPENROUTER_API_KEY
-
           startupProbe:
             httpGet:
               path: /health
               port: 8000
             periodSeconds: 5
             failureThreshold: 30
-
           readinessProbe:
             httpGet:
               path: /ready
@@ -41,7 +39,6 @@ spec:
             periodSeconds: 5
             timeoutSeconds: 2
             failureThreshold: 3
-
           livenessProbe:
             httpGet:
               path: /health
