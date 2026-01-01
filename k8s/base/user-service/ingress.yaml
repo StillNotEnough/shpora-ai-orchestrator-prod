@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: shporaai-ingress
+  name: user-ingress
   namespace: shporaai
 spec:
   ingressClassName: nginx
   rules:
-    - host: ai.local
+    - host: user.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: ai-service
+                name: user-service
                 port:
                   number: 80
