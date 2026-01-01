@@ -24,8 +24,8 @@ spec:
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                name: user-service-secrets
-                key: JWT_SECRET
+                  name: user-service-secrets
+                  key: JWT_SECRET
           startupProbe:
             httpGet:
               path: /actuator/health/liveness
