@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - namespace/shporaai.yaml
   - ai-service
-  - ingress
