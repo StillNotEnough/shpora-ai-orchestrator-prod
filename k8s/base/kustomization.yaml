@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - namespace/shporaai.yaml
   - ai-service
+  - user-service
