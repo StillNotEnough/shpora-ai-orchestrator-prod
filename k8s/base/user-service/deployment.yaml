@@ -16,20 +16,26 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ghcr.io/stillnotenough/user-service:sha-df7862f
+          image: ghcr.io/stillnotenough/user-service:sha-173b8d4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                name: user-service-secrets
+                key: JWT_SECRET
           startupProbe:
             httpGet:
-              path: /api/v1/auth/health
+              path: /actuator/health/liveness
               port: 8080
             periodSeconds: 5
             failureThreshold: 30
 
           readinessProbe:
             httpGet:
-              path: /api/v1/auth/health
+              path: /actuator/health/readiness
               port: 8080
             initialDelaySeconds: 2
             periodSeconds: 5
@@ -38,7 +44,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /api/v1/auth/health
+              path: /actuator/health/liveness
               port: 8080
             periodSeconds: 10
             timeoutSeconds: 2
