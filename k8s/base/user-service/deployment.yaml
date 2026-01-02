@@ -23,11 +23,39 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: k8s
+
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: user-service-secrets
                   key: JWT_SECRET
+
+            - name: JWT_ACCESS_EXPIRATION
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: JWT_ACCESS_EXPIRATION
+
+            - name: JWT_REFRESH_EXPIRATION
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: JWT_REFRESH_EXPIRATION
+            
+            - name: DB_URL
+              value: "jdbc:postgresql://shporaai-postgres:5432/shporaai_db"
+
+            - name: DB_USER
+              valueFrom:
+               secretKeyRef:
+                name: user-postgres-secret
+                key: POSTGRES_USER
+
+            - name: DB_PASSWORD
+              valueFrom:
+               secretKeyRef:
+                name: user-postgres-secret
+                key: POSTGRES_PASSWORD
           startupProbe:
             httpGet:
               path: /actuator/health/liveness
