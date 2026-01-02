@@ -16,11 +16,13 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ghcr.io/stillnotenough/user-service:sha-173b8d4
+          image: ghcr.io/stillnotenough/user-service:sha-76350f5
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: k8s
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
