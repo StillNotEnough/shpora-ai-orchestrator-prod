@@ -24,7 +24,7 @@ spec:
               name: postgres
           envFrom:
             - secretRef:
-                name: user-postgres-secret
+                name: shporaai-postgres-secret
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/postgresql/data
