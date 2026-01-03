@@ -13,6 +13,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-              name: frontend
-              port:
-                number: 80
+                name: frontend
+                port:
+                  number: 80
