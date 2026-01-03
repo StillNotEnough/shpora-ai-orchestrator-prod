@@ -45,20 +45,21 @@ spec:
             - name: DB_URL
               valueFrom:
                 secretKeyRef:
-                name: user-service-secrets
-                key: DB_URL
+                  name: user-service-secrets
+                  key: DB_URL
 
             - name: DB_USER
               valueFrom:
                secretKeyRef:
-                name: user-service-secrets
-                key: DB_USER
+                  name: user-service-secrets
+                  key: DB_USER
 
             - name: DB_PASSWORD
               valueFrom:
                secretKeyRef:
-                name: user-service-secrets
-                key: DB_PASSWORD
+                  name: user-service-secrets
+                  key: DB_PASSWORD
+                  
           startupProbe:
             httpGet:
               path: /actuator/health/liveness
