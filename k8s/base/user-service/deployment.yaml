@@ -16,57 +16,49 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ghcr.io/stillnotenough/user-service:sha-76350f5
+          image: ghcr.io/StillNotEnough/user-service:sha-a515373
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: k8s
-
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: user-service-secrets
                   key: JWT_SECRET
-
             - name: JWT_ACCESS_EXPIRATION
               valueFrom:
                 secretKeyRef:
                   name: user-service-secrets
                   key: JWT_ACCESS_EXPIRATION
-
             - name: JWT_REFRESH_EXPIRATION
               valueFrom:
                 secretKeyRef:
                   name: user-service-secrets
                   key: JWT_REFRESH_EXPIRATION
-            
             - name: DB_URL
               valueFrom:
                 secretKeyRef:
                   name: user-service-secrets
                   key: DB_URL
-
             - name: DB_USER
               valueFrom:
-               secretKeyRef:
+                secretKeyRef:
                   name: user-service-secrets
                   key: DB_USER
-
             - name: DB_PASSWORD
               valueFrom:
-               secretKeyRef:
+                secretKeyRef:
                   name: user-service-secrets
                   key: DB_PASSWORD
-                  
           startupProbe:
             httpGet:
               path: /actuator/health/liveness
               port: 8080
             periodSeconds: 5
             failureThreshold: 30
-
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
@@ -75,7 +67,6 @@ spec:
             periodSeconds: 5
             timeoutSeconds: 2
             failureThreshold: 3
-
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
