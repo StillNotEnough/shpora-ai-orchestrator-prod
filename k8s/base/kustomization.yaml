@@ -6,3 +6,4 @@ resources:
   - postgres
   - user-service
   - ai-service
+  - frontend
