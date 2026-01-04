@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/stillnotenough/frontend:sha-c9ced27
+          image: ghcr.io/stillnotenough/frontend:sha-ab24683
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
