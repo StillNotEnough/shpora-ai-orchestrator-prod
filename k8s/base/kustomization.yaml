@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - namespace/shporaai.yaml
+  - shporaai-ingress
   - postgres
   - user-service
   - ai-service

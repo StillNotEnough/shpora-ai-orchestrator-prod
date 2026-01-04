@@ -5,5 +5,4 @@ namespace: shporaai
 
 resources:
   - deployment.yaml
-  - ingress.yaml
   - service.yaml
