@@ -53,6 +53,10 @@ spec:
                 secretKeyRef:
                   name: user-service-secrets
                   key: DB_PASSWORD
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
           startupProbe:
             httpGet:
               path: /actuator/health/liveness
