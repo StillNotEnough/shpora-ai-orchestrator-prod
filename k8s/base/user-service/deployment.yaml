@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ghcr.io/stillnotenough/user-service:sha-325a376
+          image: ghcr.io/stillnotenough/user-service:sha-b1806aa
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
