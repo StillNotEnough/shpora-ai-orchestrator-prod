@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - ingress
   - postgres
+  - redis
   - user-service
   - ai-service
   - frontend
