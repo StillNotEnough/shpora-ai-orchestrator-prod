@@ -16,58 +16,58 @@ spec:
         app: notification-service
     spec:
       containers:
-      - name: notification-service
-        image: ghcr.io/stillnotenough/notification-service:sha-latest
-        ports:
-        - containerPort: 8081
-          name: http
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: "prod"
-        - name: SERVER_PORT
-          value: "8081"
-        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-          value: "kafka:9092"
-        - name: SPRING_MAIL_HOST
-          valueFrom:
-            secretKeyRef:
-              name: notification-secrets
-              key: mail-host
-        - name: SPRING_MAIL_PORT
-          valueFrom:
-            secretKeyRef:
-              name: notification-secrets
-              key: mail-port
-        - name: SPRING_MAIL_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: notification-secrets
-              key: mail-username
-        - name: SPRING_MAIL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: notification-secrets
-              key: mail-password
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /actuator/health/liveness
-            port: 8081
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          timeoutSeconds: 3
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /actuator/health/readiness
-            port: 8081
-          initialDelaySeconds: 30
-          periodSeconds: 5
-          timeoutSeconds: 3
-          failureThreshold: 3
+        - name: notification-service
+          image: ghcr.io/stillnotenough/notification-service:sha-799e39b
+          ports:
+            - containerPort: 8081
+              name: http
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: SERVER_PORT
+              value: "8081"
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka:9092"
+            - name: SPRING_MAIL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: notification-secrets
+                  key: mail-host
+            - name: SPRING_MAIL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: notification-secrets
+                  key: mail-port
+            - name: SPRING_MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: notification-secrets
+                  key: mail-username
+            - name: SPRING_MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-secrets
+                  key: mail-password
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8081
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
