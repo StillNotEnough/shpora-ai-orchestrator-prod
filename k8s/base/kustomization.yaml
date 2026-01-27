@@ -6,6 +6,8 @@ resources:
   - ingress
   - postgres
   - redis
+  - kafka
   - user-service
+  - notification-service
   - ai-service
   - frontend

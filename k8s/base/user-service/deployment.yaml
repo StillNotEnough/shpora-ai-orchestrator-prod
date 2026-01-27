@@ -57,6 +57,8 @@ spec:
               value: redis
             - name: REDIS_PORT
               value: "6379"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka:9092"
           startupProbe:
             httpGet:
               path: /actuator/health/liveness
