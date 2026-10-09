@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ai-service
-          image: ghcr.io/stillnotenough/ai-service:sha-54cc9fb
+          image: ghcr.io/stillnotenough/ai-service:sha-8c4f6dc
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
