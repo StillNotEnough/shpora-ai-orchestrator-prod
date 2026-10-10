@@ -3,5 +3,4 @@ kind: Kustomization
 
 resources:
   - ai-ingress.yaml
-  - user-ingress.yaml
   - frontend-ingress.yaml
